@@ -27,6 +27,3 @@ class Toast():
             self.roast_level = 3
         elif(seconds > 45):
             self.roast_level = 4
-    
-    def rot(self):
-        pass

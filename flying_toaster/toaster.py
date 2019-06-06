@@ -37,13 +37,13 @@ class Toaster():
         while number_of_toasts > 0:
             empty_slot = empty_deque.popleft()
 
-            empty_slot.toast = Toast(bread_type)
+            empty_slot.add_toast(bread_type)
 
             number_of_toasts -= 1      
         
     def remove_toasts(self):
-        if len(self.slots) > 0:
-            self.slots = []
+        for slot in self.slots:
+            slot.remove_toast()
 
     def toast(self):
         if self._toasting_time is None:
@@ -56,7 +56,7 @@ class Toaster():
         for slot in self.slots:
             slot.toast.get_roast_level(self._toasting_time)
 
-        print('Finished toasting.')
+        print('\nDone!')
         print(f'Your toast is: {self.slots[0].toast.roast_levels[self.slots[0].toast.roast_level]}.') 
         print('Please remove toasts and enjoy.')
 
