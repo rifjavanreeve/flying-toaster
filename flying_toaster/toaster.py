@@ -9,12 +9,14 @@ class Toaster():
     slots = []
     _toasting_time = None
     
-    def __init__(self, number_of_slots, colour):
+    def __init__(self, number_of_slots, colour='silver'):
         self.colour = colour
 
         self._add_slots(number_of_slots)
     
     def _add_slots(self, number_of_slots):
+        self.slots = []
+        
         for number in range(number_of_slots):
             new_slot = Slot(number+1)
 
@@ -25,7 +27,8 @@ class Toaster():
         
         empty_deque = deque(empty_slots)
 
-        if [slot for slot in self.slots if not slot.is_empty() and slot.toast.is_toasted()]:
+        if [slot for slot in self.slots if not slot.is_empty() 
+            and slot.toast.is_toasted()]:
             raise Exception('There are still toasted toasts in the slots. Empty toaster first.')
         
         if number_of_toasts > len(self.slots):
@@ -54,7 +57,8 @@ class Toaster():
             time.sleep(1)
 
         for slot in self.slots:
-            slot.toast.get_roast_level(self._toasting_time)
+            if slot.toast is not None:
+                slot.toast.get_roast_level(self._toasting_time)
 
         print('\nDone!')
         print(f'Your toast is: {self.slots[0].toast.roast_levels[self.slots[0].toast.roast_level]}.') 
