@@ -6,7 +6,7 @@ class Toast():
         2: 'well toasted',
         3: 'heavily toasted',
         4: 'burned'
-    } # TODO: roast levels
+    }
     
     roast_level = 0
 
@@ -15,6 +15,20 @@ class Toast():
 
     def is_toasted(self):
         return self.roast_level > 0
+    
+    def set_roast_level(self, seconds):
+        if(seconds == 0):
+            self.roast_level = 0
+        elif(seconds <= 15):
+            self.roast_level = 1
+        elif(seconds <= 30):
+            self.roast_level = 2
+        elif(seconds <= 45):
+            self.roast_level = 3
+        elif(seconds > 45):
+            self.roast_level = 4
+        
+        pass
     
     def rot(self):
         pass

@@ -5,7 +5,7 @@ from flying_toaster.slot import Slot
 from flying_toaster.toast import Toast
 
 class Toaster():
-    #TODO Toaster class
+    
     slots = []
     _toasting_time = None
     
