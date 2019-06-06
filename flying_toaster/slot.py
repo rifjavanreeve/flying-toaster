@@ -2,7 +2,7 @@ from flying_toaster.toast import Toast
 
 
 class Slot():
-#TODO slot class
+
     toast = None
 
     def __init__(self, slot_number):
@@ -15,4 +15,4 @@ class Slot():
         self.toast = Toast(bread_type)
 
     def remove_toast(self):
-        pass
+        self.toast = None
