@@ -53,7 +53,12 @@ class Toaster():
             print('Toasting... [%d seconds]\r'%second, end="")
             time.sleep(1)
 
-        print('Finished toasting. Please remove toasts and enjoy.')
+        for slot in self.slots:
+            slot.toast.get_roast_level(self._toasting_time)
+
+        print('Finished toasting.')
+        print(f'Your toast is: {self.slots[0].toast.roast_levels[self.slots[0].toast.roast_level]}.') 
+        print('Please remove toasts and enjoy.')
 
     def set_timer(self, seconds):
         self._toasting_time = seconds
