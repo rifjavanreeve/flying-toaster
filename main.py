@@ -17,5 +17,5 @@ if __name__ == "__main__":
     for slot in new_toaster.slots:
         print(slot.toast.bread_type)
 
-    new_toaster.set_timer(30)
+    new_toaster.set_timer(3)
     new_toaster.toast()
