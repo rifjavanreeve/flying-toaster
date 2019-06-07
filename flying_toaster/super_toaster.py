@@ -11,6 +11,27 @@ class SuperToaster(Toaster):
 
         self.alias = alias
 
+    def add_toasts(self, number_of_toasts, bread_type):
+        if not self._flying:
+            super().add_toasts(number_of_toasts, bread_type)
+
+        else:
+            raise Exception(self._message_flying())
+
+    def remove_toasts(self):
+        if not self._flying:
+            super().remove_toasts()
+
+        else:
+            raise Exception(self._message_flying())
+    
+    def set_timer(self, seconds):
+        if not self._flying:
+            super().set_timer(seconds)
+
+        else:
+            raise Exception(self._message_flying())
+
     def toast(self):
         self._temperature = 0
 
