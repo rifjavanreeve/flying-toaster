@@ -11,7 +11,7 @@ class Toast():
     roast_level = 0
 
     def __init__(self, bread_type):
-        self.bread_type = bread_type
+        self._bread_type = bread_type
 
     def is_toasted(self):
         return self.roast_level > 0
