@@ -97,3 +97,28 @@ def test_super_boost_toast_make_angry():
 
     with pytest.raises(Exception) as exception:
         test_toaster.super_boost_toast()
+
+def test_add_toasts_when_flying():
+    flying_toaster = SuperToaster(2, 'Spider-Toaster')
+
+    flying_toaster.fly()
+
+    with pytest.raises(Exception) as exception:
+        flying_toaster.add_toasts(2, 'Bread')
+
+def test_remove_toasts_when_flying():
+    flying_toaster = SuperToaster(2, 'Moon Toaster')
+    flying_toaster.add_toasts(2, 'Moonbread')
+
+    flying_toaster.fly()
+
+    with pytest.raises(Exception) as exception:
+        flying_toaster.remove_toasts()
+
+def test_set_timer_when_flying():
+    flying_toaster = SuperToaster(2, 'Agent Toaster')
+
+    flying_toaster.fly()
+
+    with pytest.raises(Exception) as exception:
+        flying_toaster.set_timer(30)
