@@ -22,6 +22,11 @@ class Toaster():
 
             self.slots.append(new_slot)
 
+    def _finish_toasting(self):
+        print('\nDone!')
+        print(f'Your toast is: {self.slots[0].toast.roast_levels[self.slots[0].toast.roast_level]}.') 
+        print('Please remove toasts and enjoy.')
+
     def add_toasts(self, number_of_toasts, bread_type):
         empty_slots = [slot for slot in self.slots if slot.is_empty()]
         
@@ -48,7 +53,7 @@ class Toaster():
         for slot in self.slots:
             slot.remove_toast()
 
-    def toast(self):
+    def toast(self, callback=None):
         if self._toasting_time is None:
             raise ValueError('Cannot toast because time has not been set yet.')
 
@@ -56,13 +61,14 @@ class Toaster():
             print('Toasting... [%d seconds]\r'%second, end="")
             time.sleep(1)
 
+            if callback:
+                callback(second)
+
         for slot in self.slots:
             if slot.toast is not None:
                 slot.toast.get_roast_level(self._toasting_time)
 
-        print('\nDone!')
-        print(f'Your toast is: {self.slots[0].toast.roast_levels[self.slots[0].toast.roast_level]}.') 
-        print('Please remove toasts and enjoy.')
+        self._finish_toasting()
 
     def set_timer(self, seconds):
         self._toasting_time = seconds
